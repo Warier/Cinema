@@ -1,15 +1,17 @@
-public class SalaVip extends Sala{
+// Felippe Machado Nunes de Oliveira    RA:2347946
 
-	public SalaVip(int identificador, int numDeAssentos) {
-		super(identificador, numDeAssentos);
+public final class SalaVip extends Sala{
+
+	public SalaVip(int identificador) {
+		super(identificador);
 	}
 
-	public int getNumeroDeAssentos() {
+	public final int getNumeroDeAssentos() {
 		return super.numDeAssentos - 25;
 	}
 
 	public double getPreco() {
-		return super.preco + 25;
+		return 25;
 	}
 
 }

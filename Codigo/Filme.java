@@ -1,10 +1,15 @@
-public class Filme {
+// Felippe Machado Nunes de Oliveira    RA:2347946
+public final class Filme {
 	private String nome;
 	private String descricao;
 	private String categoria;
 	private String trailer; // link para o trailer no Youtube
 	private int duracaoEmMinutos;
 	private int classificacaoEtaria;
+	
+	public Filme() {
+		
+	}
 
 	public Filme(String nome) {
 		this.nome = nome;
@@ -63,6 +68,7 @@ public class Filme {
 		System.out.printf("Categoria: %-5s  Duracao: %d Minutos  Classificacao etaria: %d Anos%n", categoria, duracaoEmMinutos, classificacaoEtaria);
 		System.out.printf("Trailer: %s%n%n", trailer);
 		System.out.printf("%s%n%n", descricao);
+		
 	}
 	
 }

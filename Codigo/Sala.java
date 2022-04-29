@@ -1,22 +1,31 @@
+// Felippe Machado Nunes de Oliveira    RA:2347946
+
 public abstract class Sala {
 
 	protected int numDeAssentos = 50;
-	protected int identificador; 
-	protected double preco = 0;
+	private int identificador;
 	
-	public Sala(int identificador,int numDeAssentos) {
+	public Sala(int identificador) {
 		this.identificador = identificador;
-		this.numDeAssentos = numDeAssentos;
+
 		
 	}
 	
 	public abstract int getNumeroDeAssentos();
 	
-	public int getIdentificador() {
+	public final int getIdentificador() {
 		return identificador;
 	}
 	
-	public void setIdentificador(int identificador) {
+	public final int getNumDeAssentos() {
+		return numDeAssentos;
+	}
+
+	public final void setNumDeAssentos(int numDeAssentos) {
+		this.numDeAssentos = numDeAssentos;
+	}
+
+	public final void setIdentificador(int identificador) {
 		this.identificador = identificador;
 	}
 	

@@ -1,15 +1,18 @@
-public class SalaXD extends Sala{
+// Felippe Machado Nunes de Oliveira    RA:2347946
 
-	public SalaXD(int identificador, int numDeAssentos) {
-		super(identificador, numDeAssentos);
+public final class SalaXD extends Sala{
+	
+
+	public SalaXD(int identificador) {
+		super(identificador);
 	}
 
-	public int getNumeroDeAssentos() {
+	public final int getNumeroDeAssentos() {
 		return super.numDeAssentos - 10;
 	}
 
-	public double getPreco() {
-		return super.preco + 10;
+	public final double getPreco() {
+		return 10;
 	}
 
 }

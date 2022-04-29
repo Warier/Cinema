@@ -1,5 +1,5 @@
-
-public class Sessao {
+// Felippe Machado Nunes de Oliveira    RA:2347946
+public class Sessao{
 
 	private double precoBase;
 	private int assentosOcupados = 0;
@@ -7,12 +7,15 @@ public class Sessao {
 	private Sala s1;
 	private Filme f1;
 	
+	
 	public Sessao(Sala s1, Filme f1, String dataHora, double precoBase) {
 		this.s1 = s1;
 		this.f1 = f1;
 		this.dataHora = dataHora;
 		this.precoBase = precoBase;
 	}
+	
+	
 	
 	public double getPrecoBase() {
 		return precoBase;
@@ -49,11 +52,12 @@ public class Sessao {
 		return (precoBase + s1.getPreco()) * 2;	
 	}
 	
-	public void ocuparAssento(int vendido) {
-		if(this.assentosOcupados < this.s1.numDeAssentos) {
+	public void ocuparAssento(int vendido)  {
+		if(this.assentosOcupados + vendido <= this.s1.getNumeroDeAssentos()) {
 			this.assentosOcupados += vendido;
 		} else {
 			System.out.printf("%n Os ingressos dessa sessao se esgotaram%n");
+			throw new RuntimeException();
 		}
 	}
 }

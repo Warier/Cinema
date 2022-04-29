@@ -1,4 +1,4 @@
-
+// Felippe Machado Nunes de Oliveira    RA:2347946
 public class Ingresso {
 	
 	private Sessao ss1;
@@ -16,5 +16,9 @@ public class Ingresso {
 	
 	public void setValorIngresso(double valorIngresso) {
 		this.valorIngresso = valorIngresso;
+	}
+	
+	public String toString() {
+		return ss1.getF1().getNome() + "\nHora e data: " + ss1.getDataHora() + "\t Sala " + ss1.getS1().getIdentificador();
 	}
 }

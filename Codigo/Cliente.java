@@ -1,12 +1,30 @@
+// Felippe Machado Nunes de Oliveira    RA:2347946
+public class Cliente extends Usuario implements CompraIngresso{
+	
+	private Ingresso ingresso;
 
-public class Cliente extends Usuario{
 	
-	
+	public Ingresso getIngresso() {
+		return ingresso;
+	}
+
+	public void setI1(Ingresso i1) {
+		this.ingresso = i1;
+	}
+
 
 	public Cliente(String nome, String cpf, int idade) {
 		super(nome, cpf, idade);
 	}
-
+	
+	public void compra(Sessao s1) {
+		try {
+			ingresso = new Ingresso(s1);
+			System.out.println("\nCOMPRA REALIZADA COM SUCESSO\n");
+		} catch(RuntimeException ex) {
+			System.out.println("\nNAO FOI POSSIVEL REALIZAR A COMPRA\n");
+		}
+	}
 	
 
 }

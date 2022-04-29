@@ -1,7 +1,9 @@
+// Felippe Machado Nunes de Oliveira    RA:2347946
+
 public class SalaComum extends Sala{
 
-	public SalaComum(int identificador, int numDeAssentos) {
-		super(identificador, numDeAssentos);
+	public SalaComum(int identificador) {
+		super(identificador);
 	}
 
 	public int getNumeroDeAssentos() {
@@ -9,6 +11,6 @@ public class SalaComum extends Sala{
 	}
 	
 	public double getPreco() {
-		return super.preco;
+		return 0;
 	}
 }
