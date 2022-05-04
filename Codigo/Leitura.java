@@ -12,7 +12,7 @@ public class Leitura{
 		InputStreamReader teclado = new InputStreamReader(System.in);
 		BufferedReader buff = new BufferedReader(teclado);
 		
-		String ent ="";
+		String ent = "";
 		System.out.println(entrada);
 		try{
 			ent = buff.readLine();

@@ -26,5 +26,16 @@ public class Cliente extends Usuario implements CompraIngresso{
 		}
 	}
 	
+	public String toString() {
+		return "\nNome: " + super.getNome() + "\tIdade: " + super.getIdade() + "\nCPF: " + super.getCpf();
+	}
+	
+	public void login(String entrada, String senha) {
+		if(getCpf().equals(entrada) && getSenha().equals(senha)) {
+			setOnline(true);
+		} else {
+			System.out.println("\nCPF OU SENHA INCORRETOS\n");
+		}
+	}
 
 }

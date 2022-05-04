@@ -58,7 +58,7 @@ public abstract class Usuario {
 	
 	public void login(Usuario u1,String entrada, String senha) {
 		if(u1 instanceof Cliente) {
-			if(u1.getCpf() == entrada && u1.getSenha() == senha) {
+			if(u1.getCpf().equals(entrada) && u1.getSenha().equals(senha)) {
 				this.online = true;
 			} else {
 				System.out.println("\nCPF ou senha incorretos\n");

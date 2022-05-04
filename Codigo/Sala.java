@@ -11,14 +11,10 @@ public abstract class Sala {
 		
 	}
 	
-	public abstract int getNumeroDeAssentos();
+	public abstract int getNumDeAssentos();
 	
 	public final int getIdentificador() {
 		return identificador;
-	}
-	
-	public final int getNumDeAssentos() {
-		return numDeAssentos;
 	}
 
 	public final void setNumDeAssentos(int numDeAssentos) {

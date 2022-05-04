@@ -53,7 +53,7 @@ public class Sessao{
 	}
 	
 	public void ocuparAssento(int vendido)  {
-		if(this.assentosOcupados + vendido <= this.s1.getNumeroDeAssentos()) {
+		if(this.assentosOcupados + vendido <= this.s1.getNumDeAssentos()) {
 			this.assentosOcupados += vendido;
 		} else {
 			System.out.printf("%n Os ingressos dessa sessao se esgotaram%n");

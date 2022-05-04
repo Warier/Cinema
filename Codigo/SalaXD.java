@@ -7,7 +7,7 @@ public final class SalaXD extends Sala{
 		super(identificador);
 	}
 
-	public final int getNumeroDeAssentos() {
+	public final int getNumDeAssentos() {
 		return super.numDeAssentos - 10;
 	}
 

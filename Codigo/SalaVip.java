@@ -6,11 +6,11 @@ public final class SalaVip extends Sala{
 		super(identificador);
 	}
 
-	public final int getNumeroDeAssentos() {
+	public final int getNumDeAssentos() {
 		return super.numDeAssentos - 25;
 	}
 
-	public double getPreco() {
+	public final double getPreco() {
 		return 25;
 	}
 

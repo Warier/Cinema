@@ -6,7 +6,7 @@ public class SalaComum extends Sala{
 		super(identificador);
 	}
 
-	public int getNumeroDeAssentos() {
+	public int getNumDeAssentos() {
 		return super.numDeAssentos;
 	}
 	
