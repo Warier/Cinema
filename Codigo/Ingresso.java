@@ -4,7 +4,7 @@ public class Ingresso {
 	private Sessao ss1;
 	private double valorIngresso;
 
-	public Ingresso(Sessao ss1) {
+	public Ingresso(Sessao ss1) throws SessaoIndisponivelException {
 		this.ss1 = ss1;
 		valorIngresso = ss1.valor();
 		ss1.ocuparAssento(1);

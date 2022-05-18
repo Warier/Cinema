@@ -27,4 +27,10 @@ public abstract class Sala {
 	
 	public abstract double getPreco();
 	
+	//Sobrescrita
+	public String toString() {
+		return "SALA " + this.identificador + "\nNumero de assentos: " + getNumDeAssentos() + "\n";
+		
+	}
+	
 }

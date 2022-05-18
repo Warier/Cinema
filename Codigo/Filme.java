@@ -6,6 +6,7 @@ public final class Filme {
 	private String trailer; // link para o trailer no Youtube
 	private int duracaoEmMinutos;
 	private int classificacaoEtaria;
+	private int codigo;
 	
 	public Filme() {
 		
@@ -13,6 +14,18 @@ public final class Filme {
 
 	public Filme(String nome) {
 		this.nome = nome;
+	}
+	
+	public Filme(int cod) {
+		this.codigo = cod;
+	}
+	
+	public int getCodigo() {
+		return this.codigo;
+	}
+	
+	public void setCodigo(int cod) {
+		this.codigo = cod;
 	}
 	
 	public String getNome() {

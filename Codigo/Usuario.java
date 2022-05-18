@@ -64,8 +64,7 @@ public abstract class Usuario {
 				System.out.println("\nCPF ou senha incorretos\n");
 			}
 		} else {
-			Funcionario f1 = (Funcionario) u1;
-			if(f1.getCodigo() == entrada && getSenha() == senha) {
+			if(u1.getCpf().equals(entrada) && u1.getSenha().equals(senha)) {
 				setOnline(true);
 			} else {
 				System.out.println("\nCodigo ou senha incorretos\n");

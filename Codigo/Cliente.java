@@ -1,7 +1,8 @@
 // Felippe Machado Nunes de Oliveira    RA:2347946
 public class Cliente extends Usuario implements CompraIngresso{
 	
-	private Ingresso ingresso;
+	private Ingresso ingresso = null;
+	private boolean maiorDeIdade = false;
 
 	
 	public Ingresso getIngresso() {
@@ -13,24 +14,38 @@ public class Cliente extends Usuario implements CompraIngresso{
 	}
 
 
-	public Cliente(String nome, String cpf, int idade) {
+	public Cliente(String nome, String cpf, int idade, String senha) {
 		super(nome, cpf, idade);
+		super.setSenha(senha);
+		if(idade >=  18) {
+			maiorDeIdade = true;
+		}
 	}
 	
 	public void compra(Sessao s1) {
+		if(s1.getF1().getClassificacaoEtaria() >= 18 && !maiorDeIdade) {
+			System.out.println("\nNAO FOI POSSIVEL REALIZAR A COMPRA\nSEM IDADE MINIMA PARA ENTRAR NA SESSAO ");
+			return;
+		}
 		try {
 			ingresso = new Ingresso(s1);
 			System.out.println("\nCOMPRA REALIZADA COM SUCESSO\n");
-		} catch(RuntimeException ex) {
+		} catch(SessaoIndisponivelException ex) {
 			System.out.println("\nNAO FOI POSSIVEL REALIZAR A COMPRA\n");
 		}
 	}
 	
-	public String toString() {
-		return "\nNome: " + super.getNome() + "\tIdade: " + super.getIdade() + "\nCPF: " + super.getCpf();
+	//Sobrescrita
+	public String toString() { 
+		if(ingresso == null) {
+			return  "\nNome: " + super.getNome() + "\tIdade: " + super.getIdade() + "\nCPF: " + super.getCpf();
+		} else {
+			return "\nNome: " + super.getNome() + "\tIdade: " + super.getIdade() + "\nCPF: " + super.getCpf() + "\nIngresso: " + ingresso.toString();
+		}
 	}
 	
-	public void login(String entrada, String senha) {
+	//Sobrecarga
+	public void login(String entrada, String senha) { 
 		if(getCpf().equals(entrada) && getSenha().equals(senha)) {
 			setOnline(true);
 		} else {

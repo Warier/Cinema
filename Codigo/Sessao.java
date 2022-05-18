@@ -6,7 +6,7 @@ public class Sessao{
 	private String dataHora;
 	private Sala s1;
 	private Filme f1;
-	
+	private int codigo;
 	
 	public Sessao(Sala s1, Filme f1, String dataHora, double precoBase) {
 		this.s1 = s1;
@@ -15,7 +15,13 @@ public class Sessao{
 		this.precoBase = precoBase;
 	}
 	
+	public int getCodigo() {
+		return this.codigo;
+	}
 	
+	public void setCodigo(int cod) {
+		this.codigo = cod;
+	}
 	
 	public double getPrecoBase() {
 		return precoBase;
@@ -52,12 +58,18 @@ public class Sessao{
 		return (precoBase + s1.getPreco()) * 2;	
 	}
 	
-	public void ocuparAssento(int vendido)  {
+	public void ocuparAssento(int vendido) throws SessaoIndisponivelException  {
 		if(this.assentosOcupados + vendido <= this.s1.getNumDeAssentos()) {
 			this.assentosOcupados += vendido;
 		} else {
 			System.out.printf("%n Os ingressos dessa sessao se esgotaram%n");
-			throw new RuntimeException();
+			throw new SessaoIndisponivelException();
 		}
+	}
+	
+	//Sobrescrita
+	public String toString() {
+		return "\nData e hora: "+ this.dataHora + "\nSala " + this.s1.getIdentificador() + "preco: " + this.precoBase + "\n";
+			
 	}
 }

@@ -1,16 +1,21 @@
 // Felippe Machado Nunes de Oliveira    RA:2347946
-public class Funcionario extends Usuario{
+import java.util.ArrayList;
+import java.util.List;
+
+public final class Gerente extends Usuario{
 	
-	private double salario;
+	private double salario = 20000.00;
 	private String codigo;
+	private List<Funcionario> func = new ArrayList<Funcionario>();
 	
-	public Funcionario(String nome, String cpf, int idade, String codigo, String senha) {
+
+	public Gerente(String nome, String cpf, int idade, String codigo, String senha) {
 		super(nome, cpf, idade);
 		super.setSenha(senha);
 		this.codigo = codigo;
 	}
-
-
+	
+	
 	public double getSalario() {
 		return salario;
 	}
@@ -27,6 +32,10 @@ public class Funcionario extends Usuario{
 		this.codigo = codigo;
 	}
 	
+	public void adicionarFuncionario(Funcionario f1) {
+		func.add(f1);
+	}
+	
 	//Sobrecarga
 	public void login(String codigo, String senha) {
 		if(this.codigo == codigo && getSenha() == senha) {
@@ -35,10 +44,11 @@ public class Funcionario extends Usuario{
 			System.out.println("\nCodigo ou senha incorretos\n");
 		}
 	}
-	
+		
 	//Sobrescrita
-		public String toString() {  
-			return "\nNome: " + super.getNome() + "\tIdade: " + super.getIdade() + "\nCPF: " + super.getCpf() + "\nCodigo:" + this.getCodigo() +  "\tSalario:" + this.getSalario() + "\n";
-		}
+	public String toString() {  
+		return "\nNome: " + super.getNome() + "\tIdade: " + super.getIdade() + "\nCPF: " + super.getCpf() + "\nCodigo:" + this.getCodigo() ;
+	}
+
 
 }
