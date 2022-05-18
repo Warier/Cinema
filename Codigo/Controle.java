@@ -1,7 +1,7 @@
+// Felippe Machado Nunes de Oliveira    RA:2347946
 import java.util.ArrayList;
 import java.util.List;
 
-// Felippe Machado Nunes de Oliveira    RA:2347946
 public class Controle {
 	
 	private static Leitura ler = new Leitura();
@@ -67,6 +67,123 @@ public class Controle {
 		System.out.println("\nNUMERO DE FUNCIONARIOS: "+ funcionarios.size() + "\n");
 	}
 	
+	public void cadastrarFilme() {
+		Filme f1;
+		System.out.println("\nCADASTRAR FILME\n");
+		while(vai) {
+			f1 = new Filme();
+			f1.setNome(ler.entDados("Digite o nome do filme: "));
+			f1.setCategoria(ler.entDados("Digite a categoria do filme: "));
+			f1.setDescricao(ler.entDados("Digite uma descricao para o filme: "));
+			try {
+				f1.setCodigo(Integer.parseInt(ler.entDados("Digite um codigo de identificacao para o filme: ")));
+				f1.setClassificacaoEtaria(Integer.parseInt(ler.entDados("Digite a classificacao etaria do filme: ")));
+				f1.setDuracaoEmMinutos(Integer.parseInt(ler.entDados("Digite a duracao do filme em minutos: ")));
+				filmes.add(f1);
+				break;
+			} catch (NumberFormatException ex) {
+				System.out.println("Digite apenas numeros");
+			}
+		}
+	}
+	
+	public void cadastrarSessao() {
+		Sessao s1;
+		System.out.println("\nCADASTRAR SESSAO\n");
+		while(vai) {
+			s1 = new Sessao();
+			try {
+				while(s1.getF1() == null) {
+					int cod = Integer.parseInt(ler.entDados("Digite o codigo do Filme que deseja atribuir a sessao: "));
+					for(int i = 0; i < filmes.size(); i++) {
+						if(filmes.get(i).getCodigo() == cod) {
+							s1.setF1(filmes.get(i));
+							break;
+						}
+					}
+					if(s1.getF1() == null) {
+						System.out.println("Codigo de filme nao encontrado");
+						return;
+					} else {
+						break;
+					}
+				}
+			} catch (NumberFormatException ex) {
+				System.out.println("Digite apenas numeros para o codigo");
+			}
+			try {
+				while(s1.getS1() == null) {
+					int cod = Integer.parseInt(ler.entDados("Digite o identificador da sala que deseja atribuir a sessao: "));
+					for(int i = 0; i < salas.size(); i++) {
+						if(salas.get(i).getIdentificador() == cod) {
+							s1.setS1(salas.get(i));
+							break;
+						}
+					}
+					if(s1.getS1() == null) {
+						System.out.println("identificador de sala nao encontrado");
+						return;
+					} else {
+						break;
+					}
+				}
+			} catch (NumberFormatException ex) {
+				System.out.println("Digite apenas numeros para o codigo");
+			}
+			s1.setDataHora(ler.entDados("Digite a data e a hora da sessao:"));
+			while(vai) {
+				try {
+					s1.setPrecoBase(Double.parseDouble(ler.entDados("Digite o preco base para essa sessao: ")));
+					s1.setCodigo(Integer.parseInt(ler.entDados("Digite um codigo para a sessao: ")));
+					sessoes.add(s1);
+					break;
+				} catch (NumberFormatException ex) {
+					System.out.println("Digite apenas numeros");
+				}
+			}
+			break;
+		}
+	}
+	
+	public void cadastrarSala() {
+		Sala s1;
+		System.out.println("\nCADASTRAR SALA\n");
+		while(vai) {			
+			try {
+				s1 = new SalaComum(Integer.parseInt(ler.entDados("Digite um identificador para sala: ")));
+				salas.add(s1);
+				break;
+			} catch (NumberFormatException ex) {
+				System.out.println("Digite apenas numeros");
+			}
+		}
+	}
+	
+	public void editarSalario() {
+		String cod = ler.entDados("Digite o codigo do funcionario: ");
+		boolean encontrado = false;		
+		for(int i = 0; i< funcionarios.size(); i++) {
+			if(funcionarios.get(i).getCodigo().equals(cod)) {
+				while(vai) {			
+					try {
+						funcionarios.get(i).setSalario(Double.parseDouble(ler.entDados("Digite o novo salario: ")));
+						encontrado = true;
+						break;
+					} catch (NumberFormatException ex) {
+						System.out.println("Digite apenas numeros");
+					}
+				}
+				break;
+			}
+		}
+		if(encontrado) {
+			return;
+		} else {
+			System.out.println("\nFUNCIONARIO NAO ENCONTRADO NO SISTEMA\n");
+		}
+		
+	}
+	
 	public Usuario entrar() {
 		String entrada, senha;
 		System.out.println("DIGITE O LOGIN E A SENHA PARA ENTRAR");
@@ -120,8 +237,10 @@ public class Controle {
 			case 0:
 				return;
 			case 1:
+				cadastrarFilme();
 				break;
 			case 2:
+				cadastrarSessao();
 				break;
 			case 3:
 				System.out.println("Lista de sessoes");
@@ -140,6 +259,7 @@ public class Controle {
 				System.out.println("\nNUMERO DE CLIENTES: "+ clientes.size() + "\n");
 				break;
 			case 5:
+				cadastrarSala();
 				break;
 			case 6:
 				if(u1 instanceof Gerente) {
@@ -148,7 +268,7 @@ public class Controle {
 				break;
 			case 7:
 				if(u1 instanceof Gerente) {
-					
+					editarSalario();
 				}
 				break;
 			case 8:
@@ -185,7 +305,7 @@ public class Controle {
 			case 1:
 				System.out.println("Lista de filmes");
 				for(int i = 0; i < filmes.size(); i++) {
-					System.out.println(filmes.get(i).toString());
+					filmes.get(i).impDados();
 					System.out.println("Lista de sessoes do filme");
 					for(int j = 0; j < sessoes.size(); j++) {
 						if(sessoes.get(j).getF1().equals(filmes.get(i))) {
@@ -193,11 +313,32 @@ public class Controle {
 							System.out.println(sessoes.get(j).toString());
 						}
 					}
-					System.out.println("\nNUMERO DE SESSOES: "+ sessoes.size() + "\n");
 				}
 				System.out.println("\nNUMERO DE FILMES EM CARTAZA: "+ filmes.size() + "\n");
 				break;
 			case 2:
+				int cod = -1;
+				boolean encontrado = false;	
+				while(vai) {			
+					try {
+						cod = Integer.parseInt(ler.entDados("Digite o codigo da sessao: "));
+						break;
+					} catch (NumberFormatException ex) {
+						System.out.println("Digite apenas numeros");
+					}
+				}
+				for(int i = 0; i< sessoes.size(); i++) {
+					if(sessoes.get(i).getCodigo() == cod) {
+						u1.compra(sessoes.get(i));
+						System.out.println("ULTIMO INGRESSO COMPRADO");
+						encontrado = true;
+					}
+				}
+				if(encontrado) {
+					System.out.println(u1.getIngresso().toString());
+				} else {
+					System.out.println("\nSESSAO NAO ENCONTRADO NO SISTEMA\n");
+				}
 				break;
 			case 3:
 				System.out.println("Lista de sessoes");
@@ -209,7 +350,7 @@ public class Controle {
 				break;
 			case 4:
 				if(u1.getIngresso() != null) {
-					u1.getIngresso().toString();
+					System.out.println(u1.getIngresso().toString());
 				} else {
 					System.out.println("\nNENHUM INGRESSO COMPRADO\n");
 				}
@@ -223,6 +364,7 @@ public class Controle {
 		}
 		
 	}
+	
 	
 	
 }

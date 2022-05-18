@@ -79,7 +79,7 @@ public final class Filme {
 	public void impDados() {
 		System.out.printf("%n%n \t%s %n%n", nome);
 		System.out.printf("Categoria: %-5s  Duracao: %d Minutos  Classificacao etaria: %d Anos%n", categoria, duracaoEmMinutos, classificacaoEtaria);
-		System.out.printf("Trailer: %s%n%n", trailer);
+		//System.out.printf("Trailer: %s%n%n", trailer);
 		System.out.printf("%s%n%n", descricao);
 		
 	}

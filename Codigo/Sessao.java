@@ -8,6 +8,10 @@ public class Sessao{
 	private Filme f1;
 	private int codigo;
 	
+	public Sessao() {
+		
+	}
+	
 	public Sessao(Sala s1, Filme f1, String dataHora, double precoBase) {
 		this.s1 = s1;
 		this.f1 = f1;
@@ -46,6 +50,11 @@ public class Sessao{
 	public void setS1(Sala s1) {
 		this.s1 = s1;
 	}
+	
+	public void setPrecoBase(double precoBase) {
+		this.precoBase = precoBase;
+	}
+
 	public Filme getF1() {
 		return f1;
 	}
@@ -69,7 +78,7 @@ public class Sessao{
 	
 	//Sobrescrita
 	public String toString() {
-		return "\nData e hora: "+ this.dataHora + "\nSala " + this.s1.getIdentificador() + "preco: " + this.precoBase + "\n";
+		return "\nData e hora: "+ this.dataHora + "\nSala " + this.s1.getIdentificador() + "\tpreco: " + this.valor() + "\n" + "CODIGO DE SESSAO: " + this.codigo + "\n";
 			
 	}
 }
